@@ -3,7 +3,7 @@
 There’s a simple service written to test all of this. It can be cloned:
 
 ````shell
-$ git clone http://github.com/dizz/
+$ git clone https://github.com/icclab/dumdum.git
 ````
 
 Once cloned you can issue `docker-compose up`.
