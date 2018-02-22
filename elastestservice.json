@@ -1,0 +1,57 @@
+{
+	"register": {
+		"description": "dumdum test service",
+		"id": "b1620b13-7d11-4abc-a762-f34a108ea49c",
+		"name": "DDS",
+		"short_name": "DDS",
+		"bindable": true,
+		"plan_updateable": false,
+		"plans": [
+			{
+				"bindable": false,
+				"description": "plan for dds",
+				"free": true,
+				"id": "36ed4b3e-c132-4746-af71-26dee76e59cb",
+				"metadata": {
+					"bullets": "basic plan",
+					"costs": {
+						"components": {
+							
+						},
+						"description": "On Demand 5 per deployment, 50 per core, 10 per GB ram and 1 per GB disk",
+						"fix_cost": {
+							"deployment": 5
+						},
+						"name": "On Demand 5 + Charges",
+						"type": "ONDEMAND",
+						"var_rate": {
+							"cpus": 50,
+							"disk": 1,
+							"memory": 10
+						}
+					}
+				},
+				"name": "dds_plan"
+			}
+		]
+	},
+	"manifest": {
+		"id": "1bb39d82-c185-4096-8015-750a7eb31ca8",
+		"manifest_content": "networks:\n  dumdum: {driver: bridge}\nservices:\n  dumdum:\n    build: ./dapp\n    environment: [USE_TORM=true, 'AAA=http://keystone']\n    expose: [56567]\n    image: dizz/dumdum:latest\n    networks: [dumdum]\n    ports: ['56567:5000']\nversion: '3'\n",
+		"manifest_type": "docker-compose",
+		"plan_id": "36ed4b3e-c132-4746-af71-26dee76e59cb",
+		"service_id": "b1620b13-7d11-4abc-a762-f34a108ea49c",
+		"endpoints": {
+			"dds": {
+				"description": "DDS main service",
+				"main": true,
+				"gui": {
+					"protocol": "http",
+					"port": 56567,
+                    "path": "/",
+                    "health_path": "/health"
+				}
+			}
+		}
+	}
+}

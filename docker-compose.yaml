@@ -1,0 +1,18 @@
+version: "3"
+services:
+  dumdum:
+    build: ./dapp
+    image: dizz/dumdum:latest
+    environment:
+      - USE_TORM=true
+      - AAA=http://keystone
+    expose:
+      - 56567
+    ports:
+      - "56567:5000"
+    networks:
+      - dumdum
+              
+networks:
+  dumdum:
+    driver: bridge
